@@ -3,17 +3,17 @@ const { Readable } = require("stream");
 
 export default async (req, res) => {
   const links = [
-    { url: "/index", changefreq: "daily", priority: 0.3 },
-    { url: "/turning", changefreq: "daily", priority: 0.3 },
-    { url: "/milling", changefreq: "daily", priority: 0.3 },
-    { url: "/design", changefreq: "daily", priority: 0.3 },
-    { url: "/general", changefreq: "daily", priority: 0.3 },
-    { url: "/calculator", changefreq: "daily", priority: 0.3 },
-    { url: "/capabilities", changefreq: "daily", priority: 0.3 },
-    { url: "/career", changefreq: "daily", priority: 0.3 },
-    { url: "/contacts", changefreq: "daily", priority: 0.3 },
-    { url: "/gallery", changefreq: "daily", priority: 0.3 },
-    { url: "/privacy", changefreq: "daily", priority: 0.3 },
+    { url: "/", changefreq: "monthly", priority: 0.8 },
+    { url: "/services/turning", changefreq: "monthly", priority: 0.8 },
+    { url: "/services/milling", changefreq: "monthly", priority: 0.8 },
+    { url: "/services/design", changefreq: "monthly", priority: 0.8 },
+    { url: "/services/general", changefreq: "monthly", priority: 0.8 },
+    { url: "/calculator", changefreq: "monthly", priority: 0.8 },
+    { url: "/capabilities", changefreq: "monthly", priority: 0.8 },
+    { url: "/career", changefreq: "monthly", priority: 0.8 },
+    { url: "/contacts", changefreq: "monthly", priority: 0.8 },
+    { url: "/gallery", changefreq: "monthly", priority: 0.8 },
+    { url: "/privacy", changefreq: "monthly", priority: 0.8 },
   ];
 
   const stream = new SitemapStream({ hostname: `https://${req.headers.host}` });

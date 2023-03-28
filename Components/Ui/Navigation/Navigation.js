@@ -1,11 +1,4 @@
-import {
-  Flex,
-  IconButton,
-  Stack,
-  Collapse,
-  Image,
-  Box,
-} from "@chakra-ui/react";
+import { Flex, IconButton, Collapse, Image, Box } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Links from "./Links";
 import DesktopNav from "./DesktopNav";
