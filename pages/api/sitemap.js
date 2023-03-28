@@ -15,16 +15,12 @@ export default async (req, res) => {
     { url: "/gallery", changefreq: "monthly", priority: 0.8 },
     { url: "/privacy", changefreq: "monthly", priority: 0.8 },
   ];
-
   const stream = new SitemapStream({ hostname: `https://${req.headers.host}` });
-
   res.writeHead(200, {
     "Content-Type": "application/xml",
   });
-
   const xmlString = await streamToPromise(
     Readable.from(links).pipe(stream)
   ).then((data) => data.toString());
-
   res.end(xmlString);
 };
