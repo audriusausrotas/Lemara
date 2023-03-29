@@ -6,7 +6,7 @@ export default function Document() {
     "@type": "Organization",
     name: "Lemara",
     url: "https://lemara.lt",
-    logo: "https://lemara.lt/images/logo/logo2.png",
+    logo: "https://images.prismic.io/lemara/ed34360b-d837-4ec0-8613-2cdc515dc21e_logo.png?auto=compress,format",
     description: "Lemara - CNC Tekinimas, Frezavimas, Degalių gamyba",
     address: {
       "@type": "PostalAddress",
@@ -25,6 +25,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <link rel="shortcut icon" href="/favicon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

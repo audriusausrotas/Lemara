@@ -1,6 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import Layout from "../Components/Ui/Layout";
 import theme from "../Components/Ui/Theme/theme";
 import "../Components/Ui/Theme/styles.css";
 import Head from "next/head";
