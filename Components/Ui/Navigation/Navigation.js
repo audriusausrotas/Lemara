@@ -48,20 +48,21 @@ export default function Navigation() {
   }, [language]);
 
   return (
-    <>
-      <Flex
-        boxShadow="0 0 20px black"
-        bg="#04132a"
-        h="7rem"
-        w="100%"
-        py={{ base: 1 }}
-        align="center"
-        px={{ base: "5%", xl: "10%" }}
-        position="fixed"
-        zIndex="100"
-        backgroundImage="/images/textures/navTexture.png"
-        userSelect="none"
-      >
+    <Flex
+      boxShadow="0 0 20px black"
+      bg="#04132a"
+      h="7rem"
+      w="100%"
+      py={{ base: 1 }}
+      px="4rem"
+      align="center"
+      justify="center"
+      position="fixed"
+      zIndex="100"
+      backgroundImage="/images/textures/navTexture.png"
+      userSelect="none"
+    >
+      <Flex maxW="1440px" w="100%" justify="space-between" align="center">
         <Flex
           flex={{ base: "0", lg: "auto" }}
           ml={{ base: -2 }}
@@ -107,6 +108,6 @@ export default function Navigation() {
           submenu={submenus}
         />
       </Collapse>
-    </>
+    </Flex>
   );
 }

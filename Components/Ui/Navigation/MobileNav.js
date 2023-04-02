@@ -11,7 +11,9 @@ export default function MobileNav(props) {
       w="100%"
       mt="7rem"
       position="fixed"
-      zIndex="1000"
+      zIndex="100"
+      left={0}
+      top={0}
     >
       {props.menu.map((navItem, index) => (
         <MobileNavItem
