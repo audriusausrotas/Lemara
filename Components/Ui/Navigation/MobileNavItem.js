@@ -20,7 +20,9 @@ export default function MobileNavItem({
   return (
     <Stack
       color="#ffffff"
-      _hover="#ffa500"
+      bg="#04132a"
+      backgroundImage="/images/textures/navTexture.png"
+      _hover={{ backgroundColor: "#04132a" }}
       align="start"
       spacing={4}
       onClick={!navigation_link ? onToggle : undefined}

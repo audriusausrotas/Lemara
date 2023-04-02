@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Calculations from "./Calculations/Calculations";
-import { v4 as uuidv4 } from "uuid";
 import OutputBox from "./Output/OutputBox";
 import InputTable from "./Input/InputTable";
 import { Box, Flex, Stack } from "@chakra-ui/react";
@@ -31,11 +30,10 @@ function MainInput() {
   function enteredButtonHandler() {
     clearError();
     const temp = Filter(enteredData);
+
     temp.length === 0
       ? setError("No Data Entered")
-      : temp.map((item) =>
-          setMainData((oldData) => [...oldData, { id: uuidv4(), data: item }])
-        );
+      : temp.map((item) => setMainData((prev) => [...prev, item]));
     setEnteredData("");
   }
 
@@ -59,12 +57,13 @@ function MainInput() {
 
     setFound(
       returnedFound.map((item) => {
-        return { id: uuidv4(), data: item };
+        return { data: item.join() };
       })
     );
+
     setUnused(
       returnedUnused.map((item) => {
-        return { id: uuidv4(), data: item };
+        return { id: mainData.indexOf(item.join()), data: item.join() };
       })
     );
   }
@@ -99,12 +98,14 @@ function MainInput() {
       justifyContent="center"
       align="top"
       direction={{ base: "column", xl: "row" }}
-      minH="929"
       overflow="hidden"
+      mt="0!important"
+      h="100vh"
+      w="100%"
     >
       <Box
-        w={"100vw"}
-        h={"100vh"}
+        w="100%"
+        h="100%"
         position="fixed"
         zIndex="0"
         backgroundSize="cover"

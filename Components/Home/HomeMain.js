@@ -1,15 +1,7 @@
 import Values from "./Values";
 import Links from "../Ui/Navigation/Links";
-import {
-  VStack,
-  Heading,
-  Text,
-  Show,
-  Flex,
-  Container,
-  Box,
-} from "@chakra-ui/react";
-import DefaultPage from "../Ui/DefaultPage";
+import { VStack, Heading, Text, Show, Box } from "@chakra-ui/react";
+import DefaultPage from "../Components/DefaultPage";
 import dynamic from "next/dynamic";
 import React, { Suspense } from "react";
 
@@ -19,7 +11,7 @@ const Feedback = dynamic(() => import("./Feedback"), {
 
 export default function HomeMain(props) {
   return (
-    <VStack spacing="0" overflow="hidden">
+    <VStack spacing="0">
       <Box
         backgroundSize="cover"
         backgroundPosition="center"
@@ -34,7 +26,7 @@ export default function HomeMain(props) {
         w="100vw"
         align="center"
         px="2rem"
-        mb={{ base: 0, md: "25rem", lg: "25rem", xl: "10rem" }}
+        mb={{ base: 0, xl: "10rem" }}
       >
         <Heading
           as="h1"
@@ -52,9 +44,7 @@ export default function HomeMain(props) {
         </Text>
       </Box>
       <Show above="md">
-        <Flex position="absolute" top="35rem">
-          <Values data={props.data} />
-        </Flex>
+        <Values data={props.data} />
       </Show>
       <DefaultPage
         name="whyUs"

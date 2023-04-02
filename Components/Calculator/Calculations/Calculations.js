@@ -1,5 +1,6 @@
 function Calculations(data, total) {
-  let x = data.map(item => item.data);
+  let x = data.map((item) => item);
+
   let y, i, found, z, unusedTemp;
   found = [];
   unusedTemp = [];
@@ -7,14 +8,14 @@ function Calculations(data, total) {
     z = k_combinations(x, y);
     for (i = 0; i < z.length; i++) {
       let item = z[i];
-      const numb = item.map(value => Number(value));
+      const numb = item.map((value) => Number(value));
       const aaa = String(numb.reduce((x, y) => x + y));
       aaa === total ? found.push(item) : !item[1] && unusedTemp.push(item);
     }
   }
   const foundTemp = [];
-  found.map(item => foundTemp.push(...item));
-  const unused = unusedTemp.filter(item => !foundTemp.includes(...item));
+  found.map((item) => foundTemp.push(...item));
+  const unused = unusedTemp.filter((item) => !foundTemp.includes(...item));
 
   return [found, unused];
 }

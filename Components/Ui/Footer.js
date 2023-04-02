@@ -21,7 +21,6 @@ export default function Footer(props) {
   return (
     <>
       <Container
-        overflow="hidden"
         bg={props.data.background_color}
         color={props.data.text_color}
         backgroundImage={props.data.background_texture.url}
@@ -57,7 +56,7 @@ export default function Footer(props) {
               {props.data.privacy}
             </Links>
           </Stack>
-          <Stack align={"flex-start"} mt={{ sm: 10, md: 0 }}>
+          <Stack align="flex-start" mt={{ sm: 10, md: 0 }}>
             <ListHeader>{props.data.contatcs_tab_title}</ListHeader>
             <Text>{props.data.adress}</Text>
             <Links

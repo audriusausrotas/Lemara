@@ -1,6 +1,6 @@
 import { VStack, Stack, Button } from "@chakra-ui/react";
 import React from "react";
-import InputField from "../Ui/InputField";
+import InputField from "../Components/InputField";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import { useState } from "react";

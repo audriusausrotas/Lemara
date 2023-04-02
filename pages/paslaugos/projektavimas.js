@@ -5,9 +5,12 @@ import * as prismic from "@prismicio/client";
 import sm from "../../sm.json";
 import Footer from "../../Components/Ui/Footer";
 
-const DefaultPage = dynamic(() => import("../../Components/Ui/DefaultPage"), {
-  suspense: true,
-});
+const DefaultPage = dynamic(
+  () => import("../../Components/Components/DefaultPage"),
+  {
+    suspense: true,
+  }
+);
 
 export default function Design({ page, foot }) {
   return (

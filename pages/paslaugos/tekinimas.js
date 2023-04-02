@@ -1,13 +1,16 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import * as prismic from "@prismicio/client";
 import sm from "../../sm.json";
 import Footer from "../../Components/Ui/Footer";
 
-const DefaultPage = dynamic(() => import("../../Components/Ui/DefaultPage"), {
-  suspense: true,
-});
+const DefaultPage = dynamic(
+  () => import("../../Components/Components/DefaultPage"),
+  {
+    suspense: true,
+  }
+);
 
 export default function Turning({ page, foot }) {
   return (

@@ -5,10 +5,9 @@ import {
   VStack,
   Container,
   Square,
-  Spacer,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
-import Image from "next/image";
 
 export default function DefaultPage(props) {
   return (
@@ -29,12 +28,7 @@ export default function DefaultPage(props) {
       >
         {props.name !== "aboutUs" && (
           <Square maxW="40rem" boxShadow="0 0 5px 1px black">
-            <Image
-              src={props.src}
-              alt={props.alt}
-              width={props.w}
-              height={props.h}
-            />
+            <Image src={props.src} alt={props.alt} position="static" />
           </Square>
         )}
         <VStack spacing="8">
@@ -50,12 +44,7 @@ export default function DefaultPage(props) {
         </VStack>
         {props.name === "aboutUs" && (
           <Square maxW="40rem" boxShadow="0 0 5px 1px black">
-            <Image
-              src={props.src}
-              alt={props.alt}
-              width={props.w}
-              height={props.h}
-            />
+            <Image src={props.src} alt={props.alt} />
           </Square>
         )}
       </Stack>

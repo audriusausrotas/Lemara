@@ -5,7 +5,7 @@ function OutputBox(props) {
   const width =
     props.name === "Found Sequences"
       ? ["100vw", "460px", "512px"]
-      : ["100vw", "460px", "512px", "512px", "300px"];
+      : ["100vw", "460px", "512px", "512px", "350px"];
   const height =
     props.name === "Found Sequences"
       ? "300px"
@@ -30,21 +30,21 @@ function OutputBox(props) {
         {props.name}
       </Text>
       <OrderedList>
-        {props.data.map((item) => (
+        {props.data.map((item, index) => (
           <Box
             display="flex"
             justifyContent="space-between"
             pl="10"
             pr="2"
             borderBottom="1px"
-            key={item.id}
+            key={index}
           >
             <ListItem fontSize="xl" pl="5">
               {props.name === "Entered Data"
-                ? item.data
+                ? item
                 : props.name === "Unused"
-                ? item.data.map((value) => value)
-                : item.data.map((value) => value + " , ")}
+                ? `Nr ${item.id + 1} \xa0 >> \xa0 ${item.data}`
+                : item.data + " , "}
             </ListItem>
             {props.name === "Entered Data" && (
               <IconButton

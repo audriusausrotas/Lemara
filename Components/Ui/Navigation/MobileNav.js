@@ -9,9 +9,9 @@ export default function MobileNav(props) {
       p={4}
       display={{ lg: "none" }}
       w="100%"
-      position="fixed"
       mt="7rem"
-      zIndex={100}
+      position="fixed"
+      zIndex="1000"
     >
       {props.menu.map((navItem, index) => (
         <MobileNavItem
