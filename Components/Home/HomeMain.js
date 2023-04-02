@@ -11,7 +11,7 @@ const Feedback = dynamic(() => import("./Feedback"), {
 
 export default function HomeMain(props) {
   return (
-    <VStack spacing="0">
+    <VStack spacing="0" w="100%">
       <Box
         backgroundSize="cover"
         backgroundPosition="center"
@@ -21,9 +21,8 @@ export default function HomeMain(props) {
         boxShadow="0 0 20px 10px grey"
         color={props.data.text_color}
         bg={props.data.background_color}
-        m="auto"
         h="35rem"
-        w="100vw"
+        w="100%"
         align="center"
         px="2rem"
         mb={{ base: 0, xl: "10rem" }}

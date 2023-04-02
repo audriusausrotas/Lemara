@@ -18,7 +18,7 @@ export default function Feedback(props) {
   return (
     <Box
       align="center"
-      w="100vw"
+      w="100%"
       p="2rem"
       py={{ base: "4rem", md: "6rem", lg: "8rem", xl: "9rem" }}
       color={props.data.feedback_text_color}

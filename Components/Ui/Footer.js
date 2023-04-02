@@ -5,7 +5,6 @@ import {
   Text,
   Image,
   Center,
-  Spacer,
 } from "@chakra-ui/react";
 import Links from "./Navigation/Links";
 
