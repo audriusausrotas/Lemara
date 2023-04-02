@@ -11,13 +11,13 @@ export default function SelectLanguageItem({
       px="15px"
       py="5px"
       _hover={{
-        background: "#072146",
+        backgroundColor: "#072146 ",
         backgroundImage: "/images/textures/navTexture.png",
         color: "#ffa500",
       }}
       _focus={{
-        background: "none",
-        backgroundImage: "none",
+        background: "#072146",
+        backgroundImage: "/images/textures/navTexture.png",
       }}
       onClick={handleLanguageSelect}
       value={currentValue}
@@ -28,6 +28,7 @@ export default function SelectLanguageItem({
         src={`/images/flags/${currentValue}_flag.png`}
         alt="Naudojamos kalbos vėliava"
         mr="12px"
+        pointerEvents="none"
       />
       {currentValue}
     </MenuItem>

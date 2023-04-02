@@ -60,6 +60,7 @@ export default function Navigation() {
         position="fixed"
         zIndex="100"
         backgroundImage="/images/textures/navTexture.png"
+        userSelect="none"
       >
         <Flex
           flex={{ base: "0", lg: "auto" }}
