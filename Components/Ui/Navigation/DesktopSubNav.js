@@ -2,24 +2,24 @@ import { Box, Flex, Text, Stack, Icon } from "@chakra-ui/react";
 import Links from "./Links";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
-export default function DesktopSubNav(props) {
+export default function DesktopSubNav({ label, href }) {
   return (
     <Links
-      href={props.href ?? "#"}
-      role={"group"}
-      display={"block"}
+      href={href ?? "#"}
+      role="group"
+      display="block"
       p={2}
-      rounded={"md"}
-      _hover={{ bg: props.data.submenu_background_color_hover }}
+      rounded="md"
+      _hover={{ bg: "#072146" }}
     >
-      <Stack direction={"row"} align={"center"}>
+      <Stack direction="row" align="center">
         <Box>
           <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: props.data.submenu_text_color_hover }}
+            transition="all .3s ease"
+            _groupHover={{ color: "#ffa500" }}
             fontWeight={500}
           >
-            {props.label}
+            {label}
           </Text>
         </Box>
         <Flex
@@ -27,16 +27,11 @@ export default function DesktopSubNav(props) {
           transform={"translateX(-10px)"}
           opacity={0}
           _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
+          justify="flex-end"
+          align="center"
           flex={1}
         >
-          <Icon
-            color={props.data.submenu_icon_color}
-            w={5}
-            h={5}
-            as={ChevronRightIcon}
-          />
+          <Icon color="#ffa500" w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Links>

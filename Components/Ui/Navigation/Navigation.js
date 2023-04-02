@@ -3,13 +3,17 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Links from "./Links";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-import React, { useState } from "react";
-import { CurrentSettings } from "../../../pages/_app";
+import { useState, useEffect } from "react";
 import SelectLanguage from "./SelectLanguage/SeletLanguage";
+import { useRouter } from "next/router";
+import { menu, submenu } from "./Menu";
 
-export default function Navigation(props) {
-  const { language, setLanguage } = React.useContext(CurrentSettings);
+export default function Navigation() {
   const [isOpen, setOpen] = useState(false);
+  const [language, setLanguage] = useState("LT");
+  const router = useRouter();
+  const [menus, setMenus] = useState([...menu.lt]);
+  const [submenus, setSubmenus] = useState([...submenu.lt]);
 
   function handleLanguageSelect(e) {
     setLanguage(e.target.value);
@@ -19,11 +23,35 @@ export default function Navigation(props) {
     setOpen(false);
   }
 
+  useEffect(() => {
+    let display = "";
+    switch (language) {
+      case "LT":
+        setMenus([...menu.lt]);
+        setSubmenus([...submenu.lt]);
+        display = "lt";
+        break;
+      case "EN":
+        setMenus([...menu.en]);
+        setSubmenus([...submenu.en]);
+        display = "en-gb";
+        break;
+      case "NO":
+        setMenus([...menu.no]);
+        setSubmenus([...submenu.no]);
+        display = "no";
+        break;
+      default:
+        break;
+    }
+    router.push(router.asPath, router.asPath, { locale: display });
+  }, [language]);
+
   return (
-    <React.Fragment>
+    <>
       <Flex
         boxShadow="0 0 20px black"
-        bg={props.data.background_color}
+        bg="#04132a"
         h="7rem"
         w="100%"
         py={{ base: 1 }}
@@ -31,7 +59,7 @@ export default function Navigation(props) {
         px={{ base: "5%", xl: "10%" }}
         position="fixed"
         zIndex="100"
-        backgroundImage={props.data.background_texture.url}
+        backgroundImage="/images/textures/navTexture.png"
       >
         <Flex
           flex={{ base: "0", lg: "auto" }}
@@ -39,24 +67,18 @@ export default function Navigation(props) {
           display={{ base: "flex", lg: "none" }}
         >
           <IconButton
-            _hover={{ background: props.data.hamburger_icon_background_color }}
+            _hover={{ background: "#072147" }}
             onClick={() => setOpen((prev) => !prev)}
-            color={props.data.hamburger_icon_color}
+            color="#ffffff"
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
+            variant="ghost"
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", lg: "start" }}>
           <Links href="/">
-            <Image
-              src={props.data.logo.url}
-              alt={props.data.logo.alt}
-              w="100px"
-              h="100%"
-            />
+            <Image src="/logo.png" alt="Lemara logotipas" w="100px" h="100%" />
           </Links>
 
           <Flex
@@ -64,13 +86,12 @@ export default function Navigation(props) {
             ml={{ lg: 5, xl: 20 }}
             align="center"
           >
-            <DesktopNav data={props.data} />
+            <DesktopNav menu={menus} submenu={submenus} />
           </Flex>
         </Flex>
 
         <Box width="120px">
           <SelectLanguage
-            data={props.data}
             language={language}
             handleLanguageSelect={handleLanguageSelect}
           />
@@ -78,8 +99,13 @@ export default function Navigation(props) {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav closeMenu={closeMenu} data={props.data} />
+        <MobileNav
+          closeMenu={closeMenu}
+          language={language}
+          menu={menus}
+          submenu={submenus}
+        />
       </Collapse>
-    </React.Fragment>
+    </>
   );
 }

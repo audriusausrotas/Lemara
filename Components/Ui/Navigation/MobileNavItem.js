@@ -11,16 +11,16 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function MobileNavItem({
   closeMenu,
-  data,
   navigation_item,
   navigation_link,
+  submenu,
 }) {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Stack
-      color={data.text_color}
-      _hover={{ color: data.text_color_hover }}
+      color="#ffffff"
+      _hover="#ffa500"
       align="start"
       spacing={4}
       onClick={!navigation_link ? onToggle : undefined}
@@ -31,9 +31,7 @@ export default function MobileNavItem({
           zIndex="1"
           py="0.5rem"
           href={navigation_link ?? "#"}
-          _hover={{
-            textDecoration: "none",
-          }}
+          _hover={{ textDecoration: "none" }}
         >
           <Text fontWeight={600}>{navigation_item}</Text>
           {!navigation_link && ""}
@@ -41,15 +39,15 @@ export default function MobileNavItem({
       ) : (
         <Button
           pl="0"
-          bg={data.background_color}
-          backgroundImage={data.background_texture.url}
+          bg="#04132a"
+          backgroundImage="/images/textures/navTexture.png"
           _hover={{
-            bg: data.background_color,
-            backgroundImage: data.background_texture.url,
+            bg: "#04132a",
+            backgroundImage: "/images/textures/navTexture.png",
           }}
           _active={{
-            bg: data.background_color,
-            backgroundImage: data.background_texture.url,
+            bg: "#04132a",
+            backgroundImage: "/images/textures/navTexture.png",
           }}
         >
           {navigation_item}
@@ -75,11 +73,11 @@ export default function MobileNavItem({
           align="start"
         >
           {!navigation_link &&
-            data.slices[1].items.map((child) => (
+            submenu.map((child, index) => (
               <Links
                 onClick={closeMenu}
-                color={data.submenu_text_color}
-                key={child.navigation_item}
+                color="#ffffff"
+                key={index}
                 py={2}
                 href={child.navigation_link ?? "#"}
               >

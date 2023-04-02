@@ -5,9 +5,9 @@ import {
   Text,
   Image,
   Center,
+  Spacer,
 } from "@chakra-ui/react";
 import Links from "./Navigation/Links";
-import React from "react";
 
 const ListHeader = ({ children }) => {
   return (
@@ -19,7 +19,7 @@ const ListHeader = ({ children }) => {
 
 export default function Footer(props) {
   return (
-    <React.Fragment>
+    <>
       <Container
         overflow="hidden"
         bg={props.data.background_color}
@@ -29,6 +29,7 @@ export default function Footer(props) {
         maxW="100%"
         py={10}
         align="center"
+        mt="0!important"
       >
         <SimpleGrid
           templateColumns={{ sm: "1fr", md: "2fr 1fr 1fr 1fr" }}
@@ -50,7 +51,7 @@ export default function Footer(props) {
             <Text>{props.data.company_code}</Text>
             <Text>{props.data.vat_code}</Text>
             <Links
-              href="/privacy"
+              href="/privatumas"
               _hover={{ color: props.data.link_text_color_hover }}
             >
               {props.data.privacy}
@@ -75,19 +76,19 @@ export default function Footer(props) {
           <Stack align={"flex-start"} mt={{ sm: 10, md: 0 }}>
             <ListHeader>{props.data.services_tab_title}</ListHeader>
             <Links
-              href="/services/turning"
+              href="/paslaugos/tekinimas"
               _hover={{ color: props.data.link_text_color_hover }}
             >
               {props.data.turning}
             </Links>
             <Links
-              href="/services/milling"
+              href="/paslaugos/frezavimas"
               _hover={{ color: props.data.link_text_color_hover }}
             >
               {props.data.milling}
             </Links>
             <Links
-              href="/services/design"
+              href="/paslaugos/projektavimas"
               _hover={{ color: props.data.link_text_color_hover }}
             >
               {props.data.design}
@@ -95,6 +96,6 @@ export default function Footer(props) {
           </Stack>
         </SimpleGrid>
       </Container>
-    </React.Fragment>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import {
   VStack,
   Container,
   Square,
+  Spacer,
 } from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
@@ -13,9 +14,9 @@ export default function DefaultPage(props) {
   return (
     <Container
       maxW="100%"
-      w="100%"
       bg={props.bg}
       backgroundImage={props.bgTexture}
+      flex={1}
     >
       <Stack
         direction={{ base: "column", xl: "row" }}

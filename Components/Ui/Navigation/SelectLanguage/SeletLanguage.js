@@ -1,5 +1,4 @@
-import { Menu, MenuButton, MenuList, Button } from "@chakra-ui/react";
-import Country from "flagit";
+import { Menu, MenuButton, MenuList, Button, Image } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import SelectLanguageItem from "./SelectLanguageItem";
 
@@ -7,25 +6,27 @@ export default function SelectLanguage(props) {
   return (
     <Menu>
       <MenuButton
-        bg={props.data.language_bar_background_color}
-        backgroundImage={props.data.language_bar_background_texture.url}
+        bg="#04132a"
+        backgroundImage="/images/textures/navTexture.png"
         border="none"
         _hover={{
-          background: props.data.language_bar_background_color_hover,
-          backgroundImage: props.data.language_bar_bg_texture_hover.url,
+          background: "#04132a",
+          backgroundImage: "/images/textures/navTexture.png",
         }}
         _active={{
-          background: props.data.language_bar_background_color,
-          backgroundImage: props.data.language_bar_background_texture.url,
+          background: "#04132a",
+          backgroundImage: "/images/textures/navTexture.png",
         }}
-        color={props.data.language_bar_text_color}
+        color="#ffffff"
         maxW="8rem"
         as={Button}
         rightIcon={<ChevronDownIcon />}
         leftIcon={
-          <Country
-            countryShort={props.language !== "EN" ? props.language : "GD"}
-            size="md"
+          <Image
+            h="1rem"
+            w="1.5rem"
+            src={`/images/flags/${props.language}_flag.png`}
+            alt="Naudojamos kalbos vėliava"
           />
         }
       >
@@ -33,25 +34,22 @@ export default function SelectLanguage(props) {
       </MenuButton>
       <MenuList
         minW="8rem"
-        bg={props.data.language_item_background_color}
-        backgroundImage={props.data.language_item_background_texture.url}
+        bg="#04132a"
+        backgroundImage="/images/textures/navTexture.png"
         border="none"
-        color={props.data.language_item_text_color}
+        color="#ffffff"
       >
         <SelectLanguageItem
           currentValue="LT"
           handleLanguageSelect={props.handleLanguageSelect}
-          data={props.data}
         />
         <SelectLanguageItem
           currentValue="EN"
           handleLanguageSelect={props.handleLanguageSelect}
-          data={props.data}
         />
         <SelectLanguageItem
           currentValue="NO"
           handleLanguageSelect={props.handleLanguageSelect}
-          data={props.data}
         />
       </MenuList>
     </Menu>

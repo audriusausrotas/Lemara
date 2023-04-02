@@ -1,6 +1,14 @@
 import Values from "./Values";
 import Links from "../Ui/Navigation/Links";
-import { VStack, Heading, Text, Show, Flex, Container } from "@chakra-ui/react";
+import {
+  VStack,
+  Heading,
+  Text,
+  Show,
+  Flex,
+  Container,
+  Box,
+} from "@chakra-ui/react";
 import DefaultPage from "../Ui/DefaultPage";
 import dynamic from "next/dynamic";
 import React, { Suspense } from "react";
@@ -12,7 +20,7 @@ const Feedback = dynamic(() => import("./Feedback"), {
 export default function HomeMain(props) {
   return (
     <VStack spacing="0" overflow="hidden">
-      <Container
+      <Box
         backgroundSize="cover"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
@@ -21,10 +29,11 @@ export default function HomeMain(props) {
         boxShadow="0 0 20px 10px grey"
         color={props.data.text_color}
         bg={props.data.background_color}
-        maxW="100%"
+        m="auto"
         h="35rem"
+        w="100vw"
         align="center"
-        px={{ base: "4%", sm: "4%", lg: "10%", xl: "10%", "2xl": "20%" }}
+        px="2rem"
         mb={{ base: 0, md: "25rem", lg: "25rem", xl: "10rem" }}
       >
         <Heading
@@ -35,14 +44,13 @@ export default function HomeMain(props) {
         >
           {props.data.title}
         </Heading>
-        <Text fontSize={{ base: "2xl", md: "3xl" }}>
+        <Text fontSize={{ base: "2xl", md: "3xl" }} maxW="100rem">
           {props.data.text}
           <Links color={props.data.text_color_link} href="/contacts">
             {props.data.text_link}
           </Links>
-          .
         </Text>
-      </Container>
+      </Box>
       <Show above="md">
         <Flex position="absolute" top="35rem">
           <Values data={props.data} />

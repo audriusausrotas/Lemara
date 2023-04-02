@@ -1,4 +1,4 @@
-import { Heading, Text, Container } from "@chakra-ui/react";
+import { Heading, Text, Container, Box } from "@chakra-ui/react";
 import Slider from "react-slick";
 import React from "react";
 
@@ -16,9 +16,10 @@ const settings = {
 
 export default function Feedback(props) {
   return (
-    <Container
+    <Box
       align="center"
-      maxW="3xl"
+      w="100vw"
+      p="2rem"
       py={{ base: "4rem", md: "6rem", lg: "8rem", xl: "9rem" }}
       color={props.data.feedback_text_color}
       bg={props.data.feedback_background_color}
@@ -41,17 +42,21 @@ export default function Feedback(props) {
       <Slider {...settings}>
         {props.data.slices[1].items.map((item) => {
           return (
-            <React.Fragment key={item.title}>
+            <Box key={item.title}>
               <Heading as="h5" size="xl" pb="1rem">
                 {item.title}
               </Heading>
-              <Text lineHeight={{ base: "1.5", lg: "1.8" }} fontSize="xl">
+              <Text
+                lineHeight={{ base: "1.5", lg: "1.8" }}
+                fontSize="xl"
+                maxW="60rem"
+              >
                 {item.text}
               </Text>
-            </React.Fragment>
+            </Box>
           );
         })}
       </Slider>
-    </Container>
+    </Box>
   );
 }

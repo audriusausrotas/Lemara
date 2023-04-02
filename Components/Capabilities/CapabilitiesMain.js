@@ -5,6 +5,7 @@ import React from "react";
 export default function CapabilitiesMain(props) {
   return (
     <Container
+      flex={1}
       px="0"
       maxW="100%"
       centerContent

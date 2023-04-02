@@ -21,7 +21,6 @@
     "@prismicio/next": "^0.1.5",
     "@prismicio/react": "^2.5.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
-    "flagit": "^2.0.3",
     "framer-motion": "^7.2.1",
     "next": "12.2.5",
     "node-fetch": "^2.6.7",

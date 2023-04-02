@@ -1,12 +1,11 @@
 import { Stack } from "@chakra-ui/react";
 import MobileNavItem from "./MobileNavItem";
-import { v4 as uuidv4 } from "uuid";
 
 export default function MobileNav(props) {
   return (
     <Stack
-      bg={props.data.background_color}
-      backgroundImage={props.data.background_texture.url}
+      bg="#04132a"
+      backgroundImage="/images/textures/navTexture.png"
       p={4}
       display={{ lg: "none" }}
       w="100%"
@@ -14,12 +13,12 @@ export default function MobileNav(props) {
       mt="7rem"
       zIndex={100}
     >
-      {props.data.slices[0].items.map((navItem) => (
+      {props.menu.map((navItem, index) => (
         <MobileNavItem
           closeMenu={props.closeMenu}
-          key={uuidv4()}
-          data={props.data}
+          key={index}
           {...navItem}
+          submenu={props.submenu}
         />
       ))}
     </Stack>

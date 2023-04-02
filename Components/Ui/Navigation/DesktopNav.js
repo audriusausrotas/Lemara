@@ -8,49 +8,44 @@ import {
 import Links from "./Links";
 import DesktopSubNav from "./DesktopSubNav";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { v4 as uuidv4 } from "uuid";
 
-export default function DesktopNav(props) {
+export default function DesktopNav({ menu, submenu }) {
   return (
-    <Stack direction={"row"} spacing={6} align="center" textAlign="center">
-      {props.data.slices[0].items.map((navItem) => (
-        <Box key={uuidv4()}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+    <Stack direction="row" spacing={6} align="center" textAlign="center">
+      {menu.map((item, index) => (
+        <Box key={index}>
+          <Popover trigger="hover" placement="bottom-start">
             <PopoverTrigger>
               <Links
-                href={navItem.navigation_link ?? "#"}
+                href={item.navigation_link ?? "#"}
                 py="0.5rem"
                 fontSize={"xl"}
                 fontWeight={500}
-                color={props.data.text_color}
-                _hover={{
-                  color: props.data.text_color_hover,
-                }}
+                color="#ffffff"
+                _hover={{ color: "#ffa500" }}
               >
-                {navItem.navigation_item}
-                {!navItem.navigation_link && <ChevronDownIcon />}
+                {item.navigation_item}
+                {!item.navigation_link && <ChevronDownIcon />}
               </Links>
             </PopoverTrigger>
 
-            {!navItem.navigation_link && (
+            {!item.navigation_link && (
               <PopoverContent
                 border={0}
-                boxShadow={"xl"}
-                bg={props.data.submenu_background_color}
-                backgroundImage={props.data.submenu_background_texture}
-                color={props.data.submenu_text_color}
+                boxShadow="xl"
+                bg="#04132a"
+                backgroundImage="/images/textures/navTexture.png"
+                color="#ffffff"
                 p={4}
-                rounded={"xl"}
-                minW={"sm"}
+                rounded="xl"
+                minW="sm"
               >
                 <Stack>
-                  {props.data.slices[1].items.map((child) => (
+                  {submenu.map((child, index) => (
                     <DesktopSubNav
-                      key={child.navigation_item}
+                      key={index}
                       label={child.navigation_item}
                       href={child.navigation_link}
-                      data={props.data}
-                      {...child}
                     />
                   ))}
                 </Stack>

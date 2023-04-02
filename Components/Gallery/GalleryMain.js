@@ -22,6 +22,7 @@ export default function GalleryMain(props) {
       bg={props.data.background_color}
       color={props.data.text_color}
       backgroundImage={props.data.background_texture.url}
+      flex={1}
     >
       <PhotoAlbum
         spacing={6}

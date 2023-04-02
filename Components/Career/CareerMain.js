@@ -17,6 +17,7 @@ export default function CareerMain(props) {
       bg={props.data.background_color}
       backgroundImage={props.data.background_texture.url}
       align="center"
+      flex={1}
       borderRadius="xl"
       py={{ sm: "1rem", md: "2rem", lg: "5rem" }}
     >
