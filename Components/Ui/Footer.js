@@ -22,7 +22,7 @@ export default function Footer(props) {
       <Container
         bg={props.data.background_color}
         color={props.data.text_color}
-        backgroundImage={props.data.background_texture.url}
+        backgroundImage="/images/textures/navTexture.png"
         as={Stack}
         maxW="100%"
         py={10}

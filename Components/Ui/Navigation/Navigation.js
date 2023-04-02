@@ -54,7 +54,7 @@ export default function Navigation() {
       h="7rem"
       w="100%"
       py={{ base: 1 }}
-      px="4rem"
+      px="2rem"
       align="center"
       justify="center"
       position="fixed"
