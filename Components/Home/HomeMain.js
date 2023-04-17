@@ -3,7 +3,7 @@ import Links from "../Ui/Navigation/Links";
 import { VStack, Heading, Text, Show, Box } from "@chakra-ui/react";
 import DefaultPage from "../Components/DefaultPage";
 import dynamic from "next/dynamic";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
 const Feedback = dynamic(() => import("./Feedback"), {
   suspense: true,

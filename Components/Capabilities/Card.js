@@ -1,6 +1,5 @@
-import { Image, Heading, HStack, Text, Container, Box } from "@chakra-ui/react";
-import { v4 as uuidv4 } from "uuid";
-import React from "react";
+import { Heading, HStack, Text, Container, Box } from "@chakra-ui/react";
+import Image from "../Ui/Images";
 
 export default function Card(props) {
   return (
@@ -9,6 +8,8 @@ export default function Card(props) {
         src={props.data.primary.image.url}
         alt={props.data.primary.image.alt}
         boxShadow="0 0 5px 1px black"
+        width={480}
+        height={377}
       />
       <Container centerContent>
         <Heading py="1rem" fontSize="28px">
@@ -16,10 +17,10 @@ export default function Card(props) {
         </Heading>
         <HStack fontSize="lg">
           <Box>
-            {props.data.items.map((item) => {
+            {props.data.items.map((item, index) => {
               return (
                 <HStack
-                  key={uuidv4()}
+                  key={index}
                   py="5px"
                   spacing="7rem"
                   justify="space-between"

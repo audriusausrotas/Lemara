@@ -1,12 +1,6 @@
-import {
-  Container,
-  SimpleGrid,
-  Stack,
-  Text,
-  Image,
-  Center,
-} from "@chakra-ui/react";
+import { Container, SimpleGrid, Stack, Text, Center } from "@chakra-ui/react";
 import Links from "./Navigation/Links";
+import Image from "./Images";
 
 const ListHeader = ({ children }) => {
   return (
@@ -40,6 +34,8 @@ export default function Footer(props) {
                 alt={props.data.logo.alt}
                 w="100px"
                 h="100%"
+                width={100}
+                height={67}
               />
             </Center>
             <Text fontSize="sm">{props.data.rights}</Text>

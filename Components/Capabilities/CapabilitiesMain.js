@@ -1,6 +1,5 @@
 import { Heading, SimpleGrid, Container } from "@chakra-ui/react";
 import Card from "../Capabilities/Card";
-import React from "react";
 
 export default function CapabilitiesMain(props) {
   return (

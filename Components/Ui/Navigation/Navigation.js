@@ -1,6 +1,7 @@
-import { Flex, IconButton, Collapse, Image, Box } from "@chakra-ui/react";
+import { Flex, IconButton, Collapse, Box } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Links from "./Links";
+import Image from "../Images";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import { useState, useEffect } from "react";
@@ -80,7 +81,14 @@ export default function Navigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", lg: "start" }}>
           <Links href="/">
-            <Image src="/logo.png" alt="Lemara logotipas" w="100px" h="100%" />
+            <Image
+              src="/logo.png"
+              alt="Lemara logotipas"
+              w="100px"
+              h="100%"
+              width={100}
+              height={67}
+            />
           </Links>
 
           <Flex

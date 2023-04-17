@@ -5,9 +5,9 @@ import {
   VStack,
   Container,
   Square,
-  Image,
 } from "@chakra-ui/react";
-import React from "react";
+import Link from "next/link";
+import Image from "../Ui/Images";
 
 export default function DefaultPage(props) {
   return (
@@ -27,9 +27,17 @@ export default function DefaultPage(props) {
         color={props.color}
       >
         {props.name !== "aboutUs" && (
-          <Square maxW="40rem" boxShadow="0 0 5px 1px black">
-            <Image src={props.src} alt={props.alt} position="static" />
-          </Square>
+          <Link href="/paslaugos/bendra">
+            <Square maxW="40rem" boxShadow="0 0 5px 1px black">
+              <Image
+                src={props.src}
+                alt={props.alt}
+                position="static"
+                width={640}
+                height={427}
+              />
+            </Square>
+          </Link>
         )}
         <VStack spacing="8">
           <Heading as="h2">{props.heading}</Heading>
@@ -44,7 +52,7 @@ export default function DefaultPage(props) {
         </VStack>
         {props.name === "aboutUs" && (
           <Square maxW="40rem" boxShadow="0 0 5px 1px black">
-            <Image src={props.src} alt={props.alt} />
+            <Image src={props.src} alt={props.alt} width={640} height={427} />
           </Square>
         )}
       </Stack>

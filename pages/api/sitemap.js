@@ -9,7 +9,7 @@ export default async (req, res) => {
     { url: "/paslaugos/projektavimas", changefreq: "monthly", priority: 0.8 },
     { url: "/paslaugos/bendra", changefreq: "monthly", priority: 0.8 },
     { url: "/calculator", changefreq: "monthly", priority: 0.8 },
-    { url: "/įrengimai", changefreq: "monthly", priority: 0.8 },
+    { url: "/irengimai", changefreq: "monthly", priority: 0.8 },
     { url: "/karjera", changefreq: "monthly", priority: 0.8 },
     { url: "/kontaktai", changefreq: "monthly", priority: 0.8 },
     { url: "/galerija", changefreq: "monthly", priority: 0.8 },

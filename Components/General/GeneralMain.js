@@ -5,7 +5,6 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import { v4 as uuidv4 } from "uuid";
 
 export default function GeneralMain(props) {
   return (
@@ -23,18 +22,18 @@ export default function GeneralMain(props) {
         {props.data.title}
       </Heading>
 
-      {props.data.text.map((item) => {
+      {props.data.text.map((item, index) => {
         switch (item.type) {
           case "heading2":
             return (
-              <Heading key={uuidv4()} as="h2" pt="1.5rem" pb="0.5rem">
+              <Heading key={index} as="h2" pt="1.5rem" pb="0.5rem">
                 {item.text}
               </Heading>
             );
           case "heading3":
             return (
               <Heading
-                key={uuidv4()}
+                key={index}
                 as="h3"
                 fontSize="22px"
                 pt="1.5rem"
@@ -44,10 +43,10 @@ export default function GeneralMain(props) {
               </Heading>
             );
           case "paragraph":
-            return <Text key={uuidv4()}>{item.text}</Text>;
+            return <Text key={index}>{item.text}</Text>;
           case "list-item":
             return (
-              <UnorderedList key={uuidv4()}>
+              <UnorderedList key={index}>
                 <ListItem>{item.text}</ListItem>
               </UnorderedList>
             );

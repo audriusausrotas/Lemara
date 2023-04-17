@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import { SmallAddIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import {

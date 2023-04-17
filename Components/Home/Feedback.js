@@ -1,4 +1,4 @@
-import { Heading, Text, Container, Box } from "@chakra-ui/react";
+import { Heading, Text, Box } from "@chakra-ui/react";
 import Slider from "react-slick";
 import React from "react";
 

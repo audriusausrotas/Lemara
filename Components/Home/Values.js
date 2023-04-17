@@ -1,4 +1,5 @@
-import { Heading, Text, SimpleGrid, Container, Image } from "@chakra-ui/react";
+import { Heading, Text, SimpleGrid, Container } from "@chakra-ui/react";
+import Image from "../Ui/Images";
 
 export default function Values(props) {
   return (
@@ -22,7 +23,12 @@ export default function Values(props) {
             boxShadow=" 0px 4px 10px -2px  grey"
             mt={{ md: "-10rem", xl: "-20rem" }}
           >
-            <Image src={item.image.url} alt={item.image.alt} />
+            <Image
+              src={item.image.url}
+              alt={item.image.alt}
+              width={48}
+              height={48}
+            />
 
             <Heading as="h6" size="lg" pt="2rem" pb="1rem">
               {item.title}
