@@ -6,7 +6,6 @@ import {
   Container,
 } from "@chakra-ui/react";
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 
 export default function PrivacyMain(props) {
   return (
@@ -23,17 +22,17 @@ export default function PrivacyMain(props) {
         {props.data.title}
       </Heading>
 
-      {props.data.text.map((item) => {
+      {props.data.text.map((item, index) => {
         switch (item.type) {
           case "heading2":
             return (
-              <Heading key={uuidv4()} as="h2" pt="2rem">
+              <Heading key={index} as="h2" pt="2rem">
                 {item.text}
               </Heading>
             );
           case "paragraph":
             return (
-              <Text pt="0.5rem" align="justify" fontSize="20px" key={uuidv4()}>
+              <Text pt="0.5rem" align="justify" fontSize="20px" key={index}>
                 {item.text}
               </Text>
             );
@@ -44,7 +43,7 @@ export default function PrivacyMain(props) {
                 textAlign="left"
                 align="justify"
                 fontSize="20px"
-                key={uuidv4()}
+                key={index}
               >
                 <ListItem>{item.text}</ListItem>
               </UnorderedList>
