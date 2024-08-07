@@ -11,11 +11,12 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title_turning": "wrong",
-    "title_milling": "social",
+    "title_turning": "pile",
+    "title_milling": "birthday",
+    "title_measure": "hungry",
     "slices": [],
-    "text_color": "#d923e2",
-    "background_color": "#d23ffa",
+    "text_color": "#4fde5b",
+    "background_color": "#4ba4b4",
     "background_texture": {
       "dimensions": {
         "width": 900,
@@ -23,10 +24,10 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a"
+      "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869"
     },
-    "title_color": "#31920b",
-    "meta_title": "species",
-    "meta_description": "gas"
+    "title_color": "#cc04b5",
+    "meta_title": "say",
+    "meta_description": "say"
   }
 }

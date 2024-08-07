@@ -26,6 +26,13 @@
           "placeholder": ""
         }
       },
+      "title_measure": {
+        "type": "Text",
+        "config": {
+          "label": "title measure",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

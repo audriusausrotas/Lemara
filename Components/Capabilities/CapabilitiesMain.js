@@ -49,6 +49,24 @@ export default function CapabilitiesMain(props) {
             )
         )}
       </SimpleGrid>
+      <Container centerContent maxW="100%" borderTop="5px solid grey" py="1rem">
+        <Heading color={props.data.title_color} pt="1rem">
+          {props.data.title_measure}
+        </Heading>
+      </Container>
+      <SimpleGrid
+        columns={{ base: 1, lg: 1 }}
+        spacing="3rem"
+        pt="3rem"
+        pb="5rem"
+      >
+        {props.data.slices.map(
+          (item) =>
+            item.primary.type === "measure" && (
+              <Card data={item} key={item.id} />
+            )
+        )}
+      </SimpleGrid>
     </Container>
   );
 }
