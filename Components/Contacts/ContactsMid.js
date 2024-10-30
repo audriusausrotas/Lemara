@@ -17,13 +17,9 @@ export default function ContactsMid(props) {
       <Heading as="h3" pb="5rem" fontSize="6xl">
         {props.data.title}
       </Heading>
-      <Stack
-        direction={{ base: "column", xl: "row" }}
-        spacing="5rem"
-        align="center"
-      >
+      <Stack direction={{ base: "column", xl: "row" }} spacing="5rem" align="center">
         <ContactsList data={props.data} />
-        <Form data={props.data} sendMessage={props.sendMessage} />
+        <Form data={props.data} locale={props.locale} />
       </Stack>
     </Container>
   );

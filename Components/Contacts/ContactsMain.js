@@ -8,7 +8,7 @@ export default function ContactsMain(props) {
   return (
     <Container maxW="100%" px="0" overflow="hidden" flex={1}>
       <ContactsTop data={props.data} />
-      <ContactsMid data={props.data} sendMessage={props.sendMessage} />
+      <ContactsMid data={props.data} locale={props.locale} />
       <Maps />
     </Container>
   );

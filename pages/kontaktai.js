@@ -6,17 +6,11 @@ import dynamic from "next/dynamic";
 import React, { Suspense } from "react";
 import Footer from "../Components/Ui/Footer";
 
-const ContactsMain = dynamic(
-  () => import("../Components/Contacts/ContactsMain"),
-  {
-    suspense: true,
-  }
-);
+const ContactsMain = dynamic(() => import("../Components/Contacts/ContactsMain"), {
+  suspense: true,
+});
 
 export default function Contacts(props) {
-  async function sendMessage(form) {
-    await emailjs.send(props.SERVICE_ID, props.TEMPLATE_ID, form, props.KEY);
-  }
   return (
     <React.Fragment>
       <Head>
@@ -24,11 +18,7 @@ export default function Contacts(props) {
         <meta name="description" content={props.page.data.meta_description} />
       </Head>
       <Suspense>
-        <ContactsMain
-          data={props.page.data}
-          sendMessage={sendMessage}
-          fallback={`Loading...`}
-        />
+        <ContactsMain data={props.page.data} locale={props.locale} fallback={`Loading...`} />
         <Footer data={props.foot.data} />
       </Suspense>
     </React.Fragment>
@@ -46,6 +36,7 @@ export async function getStaticProps({ locale }) {
       SERVICE_ID: process.env.SERVICE_ID,
       TEMPLATE_ID: process.env.TEMPLATE_ID,
       KEY: process.env.KEY,
+      locale,
     },
   };
 }

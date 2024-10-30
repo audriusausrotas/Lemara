@@ -1,28 +1,23 @@
-import { VStack, Stack, Button } from "@chakra-ui/react";
+import { VStack, Stack, Button, FormControl, FormLabel, Flex } from "@chakra-ui/react";
+
 import React from "react";
 import InputField from "../Components/InputField";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import { BsPerson } from "react-icons/bs";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import HCaptcha from "react-hcaptcha";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function Form(props) {
   const hcaptchaRef = React.createRef();
   const toast = useToast();
 
   const [name, setName] = useState("");
+  const [files, setFiles] = useState([]);
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const form = {
-    name: name,
-    email: email,
-    number: number,
-    message: message,
-  };
 
   function handleName(e) {
     setName(e.target.value);
@@ -36,12 +31,26 @@ export default function Form(props) {
   function handleMessage(e) {
     setMessage(e.target.value);
   }
+  function handleFileChange(e) {
+    setFiles(Array.from(e.target.files));
+  }
 
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
     hcaptchaRef.current.execute();
   }
+
+  const getLocalizedText = () => {
+    const locale = props.locale || "lt";
+    const texts = {
+      "en-gb": "Attach files",
+      lt: "Prisegti failus",
+      no: "Legg ved filer",
+    };
+
+    return texts[locale];
+  };
 
   async function onHCaptchaChange(captchaCode) {
     if (!captchaCode) {
@@ -58,28 +67,52 @@ export default function Form(props) {
         },
       });
       if (response.ok) {
-        props.sendMessage(form);
-        toast({
-          title: props.data.message_send,
-          status: "success",
-          position: "top",
-          duration: 2000,
-          isClosable: true,
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("number", number);
+        formData.append("message", message);
+
+        let totalSize = 0;
+        if (files.length > 0) {
+          files.forEach((f) => {
+            totalSize += f.size;
+            formData.append("attachment", f);
+          });
+        }
+
+        if (totalSize > 25 * 1024 * 1024) {
+          toast({
+            title: "Failų dydis didesnis nei 25 MB",
+            status: "error",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+          setLoading(false);
+          return;
+        }
+
+        const response = await fetch("/api/sendMail", {
+          method: "POST",
+          body: formData,
         });
-      } else {
-        toast({
-          title: props.data.message_error,
-          status: "error",
-          position: "top",
-          duration: 2000,
-          isClosable: true,
-        });
-        const error = await response.json();
-        throw new Error(error.message);
+
+        if (response.ok) {
+          toast({
+            title: props.data.message_send,
+            status: "success",
+            position: "top",
+            duration: 2000,
+            isClosable: true,
+          });
+        } else {
+          throw new Error("Klaida siunčiant užklausą");
+        }
       }
     } catch (error) {
       toast({
-        title: "Error 😮",
+        title: "Klaida 😮",
         status: "error",
         position: "top",
         duration: 2000,
@@ -91,6 +124,7 @@ export default function Form(props) {
       setName("");
       setNumber("");
       setMessage("");
+      setFiles([]);
     }
   }
 
@@ -105,7 +139,7 @@ export default function Form(props) {
         p="2rem"
         shadow="0 0 10px black"
       >
-        <VStack>
+        <Flex direction={"column"} gap={"4px"}>
           <InputField
             name={props.data.form_name}
             type="text"
@@ -127,7 +161,33 @@ export default function Form(props) {
             value={number}
             icon={<MdOutlinePhone color={props.data.form_icon_color} />}
           />
-        </VStack>
+          <FormControl>
+            <FormLabel
+              htmlFor="file-upload"
+              w={"100%"}
+              textAlign={"center"}
+              cursor={"pointer"}
+              rounded="md"
+              p={"8px"}
+              mt={"8px"}
+              bg={"#f8f8f8"}
+              border={"1px solid #000"}
+              _hover={{
+                color: props.data.form_button_hover_text_color,
+                bg: props.data.form_button_background_color,
+              }}
+            >
+              {files.length > 0 ? files.map((file) => file.name).join(", ") : getLocalizedText()}
+            </FormLabel>
+            <input
+              id="file-upload"
+              type="file"
+              onChange={handleFileChange}
+              multiple
+              style={{ display: "none" }}
+            />
+          </FormControl>
+        </Flex>
         <VStack>
           <InputField
             type="area"
@@ -135,6 +195,7 @@ export default function Form(props) {
             value={message}
             onChange={handleMessage}
           />
+
           <Button
             isLoading={loading}
             type="submit"
