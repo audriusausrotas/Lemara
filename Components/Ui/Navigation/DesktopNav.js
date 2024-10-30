@@ -1,17 +1,11 @@
-import {
-  Box,
-  Stack,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@chakra-ui/react";
+import { Box, Stack, Popover, PopoverTrigger, PopoverContent } from "@chakra-ui/react";
 import Links from "./Links";
 import DesktopSubNav from "./DesktopSubNav";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function DesktopNav({ menu, submenu }) {
   return (
-    <Stack direction="row" spacing={6} align="center" textAlign="center">
+    <Stack direction="row" spacing={12} align="center" textAlign="center">
       {menu.map((item, index) => (
         <Box key={index}>
           <Popover trigger="hover" placement="bottom-start">
