@@ -111,6 +111,7 @@ export default function Form(props) {
         }
       }
     } catch (error) {
+      console.log(error);
       toast({
         title: "Klaida 😮",
         status: "error",
