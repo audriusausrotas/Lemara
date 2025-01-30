@@ -27,17 +27,13 @@ export default function HomeMain(props) {
         px="2rem"
         mb={{ base: 0, xl: "10rem" }}
       >
-        <Heading
-          as="h1"
-          pt="7%"
-          fontSize={{ base: "35px", md: "45px" }}
-          pb="2rem"
-        >
+        <Heading as="h1" pt="7%" fontSize={{ base: "35px", md: "45px" }} pb="2rem">
           {props.data.title}
         </Heading>
         <Text fontSize={{ base: "2xl", md: "3xl" }} maxW="100rem">
           {props.data.text}
-          <Links color={props.data.text_color_link} href="/contacts">
+          {"  "}
+          <Links color={props.data.text_color_link} href="/kontaktai">
             {props.data.text_link}
           </Links>
         </Text>
