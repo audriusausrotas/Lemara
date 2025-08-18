@@ -39,18 +39,12 @@ export default function SelectLanguage(props) {
         border="none"
         color="#ffffff"
       >
-        <SelectLanguageItem
-          currentValue="LT"
-          handleLanguageSelect={props.handleLanguageSelect}
-        />
-        <SelectLanguageItem
-          currentValue="EN"
-          handleLanguageSelect={props.handleLanguageSelect}
-        />
-        <SelectLanguageItem
+        <SelectLanguageItem currentValue="LT" handleLanguageSelect={props.handleLanguageSelect} />
+        <SelectLanguageItem currentValue="EN" handleLanguageSelect={props.handleLanguageSelect} />
+        {/* <SelectLanguageItem
           currentValue="NO"
           handleLanguageSelect={props.handleLanguageSelect}
-        />
+        /> */}
       </MenuList>
     </Menu>
   );
