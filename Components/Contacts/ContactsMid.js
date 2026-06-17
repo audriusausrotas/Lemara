@@ -15,11 +15,12 @@ export default function ContactsMid(props) {
       boxShadow="0 0 20px 10px grey"
     >
       <Heading as="h3" pb="5rem" fontSize="6xl">
-        {props.data.title}
+        {/* {props.data.title} */}
+        {props.data.contact_title}
       </Heading>
       <Stack direction={{ base: "column", xl: "row" }} spacing="5rem" align="center">
         <ContactsList data={props.data} />
-        <Form data={props.data} locale={props.locale} />
+        {/* <Form data={props.data} locale={props.locale} /> */}
       </Stack>
     </Container>
   );
