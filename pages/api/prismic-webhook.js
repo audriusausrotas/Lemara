@@ -3,13 +3,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const authorization = req.headers.authorization;
-  const expectedSecret = process.env.PRISMIC_WEBHOOK_SECRET;
-
-  if (!expectedSecret || authorization !== `Bearer ${expectedSecret}`) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-
   try {
     const response = await fetch(
       `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/dispatches`,
