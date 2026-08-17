@@ -3,9 +3,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const secret = req.headers["x-prismic-webhook-secret"];
+  const authorization = req.headers.authorization;
+  const expectedSecret = process.env.PRISMIC_WEBHOOK_SECRET;
 
-  if (secret !== process.env.PRISMIC_WEBHOOK_SECRET) {
+  if (!expectedSecret || authorization !== `Bearer ${expectedSecret}`) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
